@@ -1,0 +1,199 @@
+<html><head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Medicare | Manual Input Page</title>
+
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="stat/plugins/fontawesome-free/css/all.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+     <!-- icheck bootstrap -->
+     <link rel="stylesheet" href="stat/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+     <!-- Theme style -->
+     <link rel="stylesheet" href="stat/dist/css/adminlte.min.css">
+     <!-- custom style sheet -->
+     <link rel="stylesheet" href="stat/dist/css/manualInput.css">
+     <!-- Google Font: Source Sans Pro -->
+     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+        <script src="stat/plugins/jquery/jquery.min.js"></script>
+  <script src="stat/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="stat/dist/js/adminlte.min.js"></script>
+
+</head>
+<body  class="hold-transition sidebar-mini layout-top-nav" >
+	<div class="wrapper">
+		<!-- Navbar -->
+		<nav class="main-header navbar navbar-expand navbar-white navbar-light" id="nav-bar">
+			<img src="stat/dist/img/medicarelogo.png" alt="Medicare Logo" class="brand-image" style="opacity: .8" id="logo">
+			<!-- Left navbar links -->
+			<ul class="navbar-nav">
+			<li class="nav-item d-none d-sm-inline-block" >
+				<a href="index3.html" class="nav-link" id="id1">Dashboard</a>
+			</li>
+			<li class="nav-item d-none d-sm-inline-block">
+				<a href="index3.html" class="nav-link">Log</a>
+			</li>
+			<li class="nav-item d-none d-sm-inline-block">
+				<a href="index3.html" class="nav-link">Health</a>
+			</li>
+			<li class="nav-item d-none d-sm-inline-block">
+				<a href="index3.html" class="nav-link">Settings</a>
+			</li>
+			<li class="nav-item d-none d-sm-inline-block">
+				<a href="index3.html" class="nav-link">Patients</a>
+			</li>
+			</ul>
+
+
+			<!-- Right navbar links -->
+			<ul class="navbar-nav ml-auto">
+			<!-- Messages Dropdown Menu -->
+
+			<!-- Notifications Dropdown Menu -->
+			<li class="nav-item dropdown">
+				<a class="nav-link" data-toggle="dropdown" href="#">
+				<i class="far fa-bell"></i>
+				<span class="badge badge-warning navbar-badge">15</span>
+				</a>
+				<div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+				<span class="dropdown-item dropdown-header">15 Notifications</span>
+				<div class="dropdown-divider" ></div>
+				<a href="#" class="dropdown-item">
+					<i class="fas fa-envelope mr-2"></i> 4 new messages
+					<span class="float-right text-muted text-sm">3 mins</span>
+				</a>
+				<div class="dropdown-divider"></div>
+				<a href="#" class="dropdown-item">
+					<i class="fas fa-users mr-2"></i> 8 friend requests
+					<span class="float-right text-muted text-sm">12 hours</span>
+				</a>
+				<div class="dropdown-divider"></div>
+				<a href="#" class="dropdown-item">
+					<i class="fas fa-file mr-2"></i> 3 new reports
+					<span class="float-right text-muted text-sm">2 days</span>
+				</a>
+				<div class="dropdown-divider"></div>
+				<a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+				</div>
+			</li>
+			</ul>
+
+
+		</nav>
+		<!-- /.navbar -->
+		<div class="manualInputWrapper">
+			<div class="card">
+				<form class="card-body register-card-body" action="" method="POST">
+					<div class="card-body register-card-body">
+						<p class="login-box-msg"><b>Manually input your health information</b></p>
+						<div class="input-group mb-3">
+							<input type="date" name="date"  class="form-control" id="dateText" placeholder="">
+						</div>
+						<div class="input-group mb-3">
+							<input type="number" name="weight" value="" class="form-control" id="weightText" placeholder="Weight (Optional)">
+						</div>
+						<div class="input-group mb-3">
+							<input type="number" name="systolic" value="" class="form-control" id="systolicText" placeholder="Systolic (Optional)">
+						</div>
+						<div class="input-group mb-3">
+							<input type="number" name="diastolic" value="" class="form-control" id="diastolicText" placeholder="Diastolic (Optional)">
+						</div>
+						<div class="input-group mb-3">
+							<input type="number" name="calories" value="" class="form-control" id="caloriesText" placeholder="Calories (Optional)">
+						</div>
+						<div class="input-group mb-3">
+							<input type="number" name="stepsTaken" value="" class="form-control" id="stepsText" placeholder="Steps Taken (Optional)">
+						</div>
+						<div class="input-group mb-3">
+							<input type="number" name="hoursSlept" value="" class="form-control" id="hoursSleptText" placeholder="Hours Slept (Optional)">
+						</div>
+						<div class="input-group mb-3">
+							<input type="number" name="averagePulse" value="" class="form-control" id="averagePulseText" placeholder="Average Pulse (Optional)">
+						</div>
+						<div class="input-group mb-3">
+							<textarea  name="comments" value="" class="form-control" id="textAreaComments" placeholder="Comments"></textarea>
+						</div>
+					</div>
+					<button type="submit" name="mSubmit" value="Submit" id="mSubmit" class="btn btn-secondary btn-block">Submit Data</button>
+					<button type="Return" name="Return" value="Return" id="Return" class="btn btn-primary btn-block">Return To Profile</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+<script>
+$( "form" ).submit(function( event ) {
+  var formAnswers = $( this ).serializeArray();
+  if(formAnswers[0].value == ""){
+	var today = new Date();
+	var dd = today.getDate();
+	var mm = today.getMonth()+1; //January is 0!
+	var yyyy = today.getFullYear();
+	if(dd<10) {
+		dd = '0'+dd
+	}
+	if(mm<10) {
+		mm = '0'+mm
+	}
+	today = dd + '/' + mm + '/' + yyyy;
+	formAnswers[0].value = today;
+  }
+  if(formAnswers[8].value==""){
+	  formAnswers[8].value= "No comments needed";
+  }
+  console.log(formAnswers);
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", "http://127.0.0.1:5000/send_record", true);
+  xhr.setRequestHeader('Content-Type', 'application/json');
+  xhr.send(JSON.stringify({
+	formAnswers: formAnswers
+  }));
+  alert("Thank you for filling in your health data manually.");
+  event.preventDefault();
+});
+
+// Restricts input for the given textbox to the given inputFilter function.
+function setInputFilter(textbox, inputFilter,inputType) {
+  ["input", "keydown", "keyup", "mousedown", "mouseup", "select", "contextmenu", "drop"].forEach(function(event) {
+    textbox.addEventListener(event, function() {
+      if (inputFilter(this.value)) {
+        this.oldValue = this.value;
+        this.oldSelectionStart = this.selectionStart;
+        this.oldSelectionEnd = this.selectionEnd;
+      } else if (this.hasOwnProperty("oldValue")) {
+        this.value = this.oldValue;
+        this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
+		var x = "You can only input "+inputType;
+		alert(x);
+      } else {
+        this.value = "";
+      }
+    });
+  });
+}
+
+setInputFilter(document.getElementById("weightText"), function(value) {
+  return /^\d*\.?\d*$/.test(value); // Allow digits and '.' only, using a RegExp
+},"numbers");
+setInputFilter(document.getElementById("systolicText"), function(value) {
+  return /^\d*\.?\d*$/.test(value); // Allow digits and '.' only, using a RegExp
+},"numbers");
+setInputFilter(document.getElementById("diastolicText"), function(value) {
+  return /^\d*\.?\d*$/.test(value); // Allow digits and '.' only, using a RegExp
+},"numbers");
+setInputFilter(document.getElementById("caloriesText"), function(value) {
+  return /^\d*\.?\d*$/.test(value); // Allow digits and '.' only, using a RegExp
+},"numbers");
+setInputFilter(document.getElementById("stepsText"), function(value) {
+  return /^\d*\.?\d*$/.test(value); // Allow digits and '.' only, using a RegExp
+},"numbers");
+setInputFilter(document.getElementById("hoursSleptText"), function(value) {
+  return /^\d*\.?\d*$/.test(value); // Allow digits and '.' only, using a RegExp
+},"numbers");
+setInputFilter(document.getElementById("averagePulseText"), function(value) {
+  return /^\d*\.?\d*$/.test(value); // Allow digits and '.' only, using a RegExp
+},"numbers");
+</script>
